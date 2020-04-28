@@ -11,11 +11,11 @@ class Aws implements BaseParse
 {
     use AwsTrait;
 
-    protected $store;
+    protected $storage;
 
-    public function __construct(BaseStorage $store)
+    public function __construct(BaseStorage $storage)
     {
-        $this->store = $store;
+        $this->storage = $storage;
     }
 
     public function run(array $keywords): void
@@ -57,6 +57,6 @@ class Aws implements BaseParse
 
     public function save(array $data): void
     {
-        $this->store->addRow($data);
+        $this->storage->addRow($data);
     }
 }
