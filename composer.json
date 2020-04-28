@@ -1,0 +1,20 @@
+{
+    "name": "ivan/parser-aws",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "ivan",
+            "email": "ivanpereginskiy777@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "monolog/monolog": "^2.0@dev"
+    },
+    "autoload" : {
+        "psr-4" : {
+            "App\\" : "src"
+        }
+    }
+}

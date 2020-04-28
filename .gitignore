@@ -1,0 +1,8 @@
+.git
+.idea
+
+vendor
+docker/mysql/data
+
+storage/*.log
+storage/*.csv

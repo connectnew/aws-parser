@@ -1,0 +1,9 @@
+.git
+.idea
+.gitignore
+
+README.md
+
+docker/mysql/Dockerfile
+docker/nginx/Dockerfile
+docker/php/Dockerfile

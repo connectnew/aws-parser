@@ -1,0 +1,47 @@
+version: '3.7'
+
+services:
+
+  php:
+    build:
+      context: docker/php
+    image: php:7.3-fpm
+    container_name: parser-aws_php
+    links:
+      - db
+    depends_on:
+      - db
+    environment:
+      XDEBUG_CONFIG: "remote_host=host.docker.internal"
+      PHP_IDE_CONFIG: "serverName=Docker"
+    volumes:
+      - .:/www
+      - ./docker/php/php.ini:/usr/local/etc/php/conf.d/custom.ini:ro
+    networks:
+      mynet:
+        ipv4_address: 172.80.0.3
+
+  db:
+    image: mysql:8
+    container_name: parser-aws_db
+    volumes:
+      - ./docker/mysql/data:/var/lib/mysql
+      - ./docker/mysql/init-dump:/docker-entrypoint-initdb.d
+      - ./docker/mysql/conf.d:/etc/mysql/conf.d
+    ports:
+      - 33063:3306
+    environment:
+      MYSQL_DATABASE: parser-aws
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 1234567
+      MYSQL_ROOT_PASSWORD: 1234567
+    networks:
+      mynet:
+        ipv4_address: 172.80.0.2
+
+networks:
+  mynet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.80.0.0/24
