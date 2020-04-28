@@ -2,7 +2,8 @@
 
 namespace App\Storage\File;
 
-class File {
+class File
+{
 
     protected static $file;
     protected static $fileOpen;
@@ -22,9 +23,9 @@ class File {
     public static function init()
     {
         if (file_exists(static::$file)) {
-            file_put_contents (static::$file, "");
+            file_put_contents(static::$file, "");
         }
 
-        static::$fileOpen = fopen(self::$file,"w");
+        static::$fileOpen = fopen(self::$file, "w");
     }
 }

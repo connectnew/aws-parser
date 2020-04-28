@@ -8,6 +8,8 @@ class Prepare
     {
         static::initConfig();
         static::initLog();
+
+        date_default_timezone_set(Param::get('constant.timezone'));
     }
 
     public static function initConfig()

@@ -41,7 +41,6 @@ class Aws implements BaseParse
 
         $domHead = $this->getAdviserHeading($dom);
         if ($domHead) {
-
             $domCard = $this->getCard($domHead);
 
             $result['Publisher'] = $this->getPublisherName($domHead);

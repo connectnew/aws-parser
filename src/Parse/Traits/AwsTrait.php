@@ -4,7 +4,8 @@ namespace App\Parse\Traits;
 
 use App\Main\Param;
 
-trait AwsTrait {
+trait AwsTrait
+{
 
     protected function getPage(string $keyword)
     {
@@ -16,7 +17,6 @@ trait AwsTrait {
     protected function getAdviserHeading($dom)
     {
         foreach ($dom->find('.s-shopping-adviser-heading') as $element) {
-
             if ($this->checkIsRecommendationPresent($element)) {
                 return $element;
             }
@@ -51,14 +51,14 @@ trait AwsTrait {
     {
         $publisher = trim($dom->find('.a-row .a-link-normal')[0]->plaintext);
 
-        return $publisher ? : "";
+        return $publisher ?: "";
     }
 
     protected function getArticleName($dom): string
     {
         $article = strtoupper(trim($dom->find('.a-spacing-small .a-size-large')[0]->plaintext));
 
-        return $article ? : "";
+        return $article ?: "";
     }
 
     protected function getPublisherDate($dom): string
@@ -79,7 +79,7 @@ trait AwsTrait {
         return $url ? Param::get('constant.aws.url') . $url : "";
     }
 
-    protected function getCurrentDate(string $format = 'Y F d'): string
+    protected function getCurrentDate(string $format = 'd F Y, H:i:s'): string
     {
         return date($format);
     }

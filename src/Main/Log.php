@@ -5,9 +5,10 @@ namespace App\Main;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 
-class Log {
+class Log
+{
 
-    public static $log;
+    private static $log;
 
     public function __construct()
     {
